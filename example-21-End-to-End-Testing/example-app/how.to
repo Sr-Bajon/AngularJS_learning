@@ -1,0 +1,11 @@
+dentro de la carpeta appUnderTest
+
+  npm install
+
+  node server.js
+
+fuera de la carpeta
+
+  webdriver-manager start
+
+  protractor protractor.conf.js

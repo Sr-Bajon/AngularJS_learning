@@ -1,0 +1,46 @@
+<!--En el capitulo 6 encontramos el programa de node, instalar con
+  npm install
+e iniciar con
+  node server.js-->
+
+<!-- File: chapter6/public/http-get-example.html -->
+<html ng-app="notesApp">
+<head>
+  <title>$http get example</title>
+  <style>
+    .item {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body ng-controller="MainCtrl as mainCtrl">
+
+<h1>Hello Servers!</h1>
+
+<div ng-repeat="todo in mainCtrl.items" class="item">
+  <div><span ng-bind="todo.label"></span></div>
+  <div>- by <span ng-bind="todo.author"></span></div>
+</div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+</script>
+
+<script>
+  angular.module('notesApp', [])
+    .controller('MainCtrl', ['$http', function ($http) {
+      var mainCtrl   = this;
+      mainCtrl.items = [];
+
+      $http.get('/api/note').then(
+        function (response) {
+          mainCtrl.items = response.data;
+        },
+        function (errResponse) {
+          console.error('Error while fetching notes');
+        });
+
+    }]);
+</script>
+</body>
+</html>

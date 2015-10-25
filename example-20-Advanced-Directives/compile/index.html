@@ -1,0 +1,94 @@
+<!--
+  En el ciclo de vida de la directiva, mencionamos que una directiva va a traves
+  de dos fases distintas, un paso de compilacion y un link step. El link step ya
+  lo conocemos, veamos el compile step.
+
+  Durante el tiempo que tenemos el link step de la directiva, el HTML de la
+  directiva ya ha sido parseado y todas las directivas relevantes dentro de
+  ella han sido cogidas por el compilador de AngularJS y atadas al scope
+  correcto.
+
+  En este punto, si añadimos dinamicamente alguna directiva al HTML, o hacemos
+  una manipulacion del DOM a gran escala que implique la integracion con
+  directivas AngularJS existentes, no funcionará correctamente.
+
+  El compile step en una directiva es el lugar correcto para hacer cualquier
+  tipo de manipulacion HTML del template y transformaciones del DOM.
+  No debemos usar nunca juntos la funcion link y la funcion compile, porque
+  cuando usamos la clave compile debemos devolver una función link.
+-->
+
+<html>
+<head>
+  <title>Dynamic Form App</title>
+</head>
+<body ng-app="dynamicFormApp">
+<div ng-controller="MainCtrl as mainCtrl">
+
+  <form novalidate="" name="mainForm">
+    <form-element type="text"
+                  name="uname"
+                  bind-to="mainCtrl.username"
+                  label="Username"
+                  required
+                  ng-minlength="5">
+      <validation key="required">
+        Please enter a username
+      </validation>
+      <validation key="minlength">
+        Username must be at least 5 characters
+      </validation>
+
+    </form-element>
+
+    Username is {{mainCtrl.username}}
+
+    <form-element type="password"
+                  name="pwd"
+                  bind-to="mainCtrl.password"
+                  label="Password"
+                  required
+                  ng-pattern="/^[a-zA-Z0-9]+$/">
+      <validation key="required">
+        Please enter a password
+      </validation>
+      <validation key="pattern">
+        Password must only be alphanumeric characters
+      </validation>
+    </form-element>
+
+    Password is {{mainCtrl.password}}
+
+    <button>Submit</button>
+  </form>
+</div>
+
+<script src="http://code.angularjs.org/1.2.16/angular.js"></script>
+<script src="app.js"></script>
+<script src="directive.js"></script>
+
+</body>
+</html>
+
+<!--
+  En este HTML queremos definir un formulario con unos cuantos labels e inputs.
+  Cada campo tiene su propia logica de validacion y diferentes mensajes de error
+  que necesitamos mostrar para cada campo particular.
+  En vez de escribir HTML complejo, queremos abstraer algo de eso usando la
+  directiva form-element, donde especificamos la validacion y reglas de bindeo.
+  La directiva form-element tambien nos permite definir mensajes de validacion
+  para mostrar sobre direntes condiciones de error.
+  Estos mensajes de validacion deberian mostrarse y ocultarse bajo las
+  condiciones correctas automaticamente sin la necesidad de codigo extra.
+  Un requerimiento de nuestra nueva directiva es que debe ser usada dentro
+  de un elemento form de HTML.
+
+  Estos son los tipo soportados por la directiva form-element:
+  * El tipo input (text, password y demas)
+  * El nombre del input para que sea capaz de encontrar errores facilmente
+  * La variable ngModel para bindearlo.
+  * El label para ser mostrado a lado del campo del formulario
+  * Cualquier validacion basada en ngModel, como required, ngMinLength,
+    ngPattern, etc.
+
+-->

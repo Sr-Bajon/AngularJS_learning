@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Stock Market App</title>
+</head>
+<body ng-app="stockMarketApp">
+
+<div ng-controller="MainCtrl as mainCtrl">
+  <h3>List of Stocks</h3>
+
+  <div simple-stock-repeat="mainCtrl.stocks">
+    We found {{stock.name}} at {{currentIndex}}
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+</script>
+<script src="app.js"></script>
+<script src="directive.js"></script>
+</body>
+</html>
+
+<!--
+  Hemos reemplazado la directiva stock-widget y ng-repeat por
+  simple-stock-repeat. Esta directiva toma un array de nuestro controlador
+  y usa el contenido de la directiva como un template para crear uno por cada
+  instancia del array.
+
+  La directiva expone el item actual como la variable stock, y tambien expone
+  información adicional como el indice del item en la variable currentIndex.
+
+  Cuando ejecutamos el HTML esperamos que la frase "We found..." se repita
+  cuatro veces, una para cada stock.
+-->

@@ -1,0 +1,52 @@
+<!--
+  AngularJS tiene varias directivas para controlar la validacion de los inputs
+  tal como required, ng-required, ng-minlength, etc.
+
+  Pero en algun momento, necesitaremos hacer ciertas validaciones personalizadas
+  y tener la capacidad de reutilizarlas.
+
+  Para el ejemplo, queremos que el usuario introduzca una de las tres formas
+  validas para un zip-code
+
+  • 12345
+  • 12345 1234
+  • 12345-1234
+
+-->
+
+<html>
+<head>
+  <title>Stock Market App</title>
+  <style>
+    input.ng-invalid {
+      background: pink;
+    }
+  </style>
+</head>
+<body ng-app="stockMarketApp">
+
+<div ng-controller="MainCtrl as mainCtrl">
+  <h3>Zip Code Input</h3>
+  <h5>Zips are allowed in one of the following formats</h5>
+  <ul>
+    <li>12345</li>
+    <li>12345 1234</li>
+    <li>12345-1234</li>
+  </ul>
+
+  <form novalidate="">
+    Enter valid zip code:
+    <input type="text"
+           ng-model="mainCtrl.zip"
+           valid-zip>
+  </form>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+</script>
+<script src="app.js"></script>
+<script src="directive.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- File: chapter10/routing-example/app/views/teams_list.html -->
+<div class="team-list-container">
+  <div class="team"
+       ng-repeat="team in teamListCtrl.teams | orderBy: 'rank'">
+     <div class="team-info row">
+       <div class="col-lg-1 rank">
+          <span ng-bind="team.rank"></span>
+       </div>
+       <div class="col-sm-3">
+         <img ng-src="{{team.flagUrl}}" class="flag">
+       </div>
+       <div class="col-lg-6 name">
+        <a title="Image Courtesy: Wikipedia"
+           ng-href="#/team/{{team.code}}"
+<!--           ng-href se usa cuando tenemos url dinamicas, aunque podriamos hacerlo
+           con el atributo href como siempre poniendole parametros dinamicos
+           con {{ctrl.myUrl}} se recomienda usar ng-href
+           Esto se hace porque durante la carga de la pagina, hay una pequeña
+           ventana de tiempo en la que el enlace tiene el valor {{ctrl.myUrl}}
+           antes de que Angular lo sustituya por su valor.
+           ng-href deja el valor en blanco hasta que Angular lo sustituya por
+           la URL.
+           De forma similar, ng-src se usa para imagenes que necesitan URLs
+           dinamicas ya que si no al cargar la pagina se intenta obtener la
+           imagen de por ejemplo {{ctrl.myUrl}} y evidentemente daría error,
+           ng-src deja en blanco el atributo src y despues lo carga cuando
+           obtenga el valor dinamico de Angular-->
+           ng-bind="team.name"
+           style="color: cadetblue;"></a>
+       </div>
+     </div>
+  </div>
+</div>

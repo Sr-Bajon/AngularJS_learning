@@ -1,0 +1,80 @@
+<!--
+  Los filtros se usan para procesar datos y formatear los valores para
+  presentarlos al usuario.
+
+  Se usan como expresiones en el html, o directamente sobre los datos en los
+  controladores y servicios.
+
+  Mayormente, son usados como ultimo formateo entre los datos almacenados
+  y la forma en que serán vistos por el usuario. Un ejemplo sería formatear
+  un timestamp en una fecha legible, o añadir el simbolo de moneda a una
+  cantidad.
+
+  Otra caracteristica es que cuando se usan en las vistas, obtenemos datos
+  dinamicos que no serán almacenados, los valores filtrados que se muestran al
+  usuario no modifican el valor original donde han sido aplicados.
+-->
+
+<!-- File: chapter8/filter-example-1.html -->
+<html>
+<head>
+  <title>Filters in Action</title>
+</head>
+<body ng-app="filtersApp">
+
+<div ng-controller="FilterCtrl as ctrl">
+  <div>
+    Amount as a number: {{ctrl.amount | number}}
+  </div>
+  <div>
+    Total Cost as a currency: {{ctrl.totalCost | currency}}
+  </div>
+  <div>
+    Total Cost in INR: {{ctrl.totalCost | currency:'INR '}}
+  </div>
+  <div>
+    Shouting the name: {{ctrl.name | uppercase}}
+  </div>
+  <div>
+    Whispering the name: {{ctrl.name | lowercase}}
+  </div>
+  <div>
+    Start Time: {{ctrl.startTime | date:'medium'}}
+  </div>
+</div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+</script>
+
+<script type="text/javascript">
+  angular.module('filtersApp', [])
+    .controller('FilterCtrl', [function () {
+      var ctrl = this;
+      ctrl.amount    = 1024;
+      ctrl.totalCost = 4906;
+      ctrl.name      = 'Shyam Seshadri';
+      ctrl.startTime = new Date().getTime();
+    }]);
+</script>
+
+</body>
+</html>
+
+<!--
+  La sintaxis para usar los filtros, como hemos visto es esta:
+    {{expression | filter}}
+  Pero podemos encadenar varios filtros tambien
+    {{expression | filter1 | filter2}}
+    {{ctrl.name | lowercase | limitTo:5}}
+-->
+
+<!--
+  Filtros comunes:
+  currency
+  number
+  lowercase
+  uppercase
+  json
+  date
+-->

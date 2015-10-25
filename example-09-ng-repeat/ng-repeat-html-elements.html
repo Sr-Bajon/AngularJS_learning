@@ -1,0 +1,35 @@
+<!-- File: chapter2/ng-repeat-across-elements.html -->
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl as ctrl">
+<table>
+  <tr ng-repeat-start="note in ctrl.notes">
+    <td>{{note.label}}</td>
+  </tr>
+  <tr>
+    <td>Este elemento al estar entre start y end tambien se repite</td>
+  </tr>
+  <tr ng-repeat-end>
+    <td>Done: {{note.done}}</td>
+  </tr>
+</table>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+</script>
+<script type="text/javascript">
+  angular.module('notesApp', [])
+    .controller('MainCtrl', [function () {
+      var ctrl   = this;
+      ctrl.notes = [
+        {id: 1, label: 'First Note', done: false},
+        {id: 2, label: 'Second Note', done: false},
+        {id: 3, label: 'Finished Third Note', done: true}
+      ];
+    }]);
+// en este caso se trata de repetir dos elementos html separados, y no solo
+// un elemento que contenga lo que sea, como un div con contenido
+// en el ejemplo se repiten dos filas independientes de una tabla, en una se
+// muestra el nombre del autor y en la siguiente la nota
+// los elementos que hayan entre start y end se repetiran en cada ciclo
+</script>
+</body>
+</html>

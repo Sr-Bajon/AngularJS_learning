@@ -1,0 +1,103 @@
+<!--
+  Filtros que funcionan con arrays:
+
+  limitTo: toma un string o un array y devuelve el numero de elementos desde el
+    inicio del mismo hasta el numero indicado, si el numero es negativo empezará
+    a contar desde el final.
+
+  orderBy: permite ordenar un array mediante una expresión suministrada, o un
+    conjunto de ellas. Toma un segundo argumento booleano opcional que indica
+    si el array resultante es invertido (reversed).
+    La forma mas simple es un string, con el nombre del campo (la clave del
+    objeto) por el que ordenar, con un + o - opcional para indicar si es
+    ascendente o descendente.
+    El predicado también adminte una funcion y un array en el que cada uno de
+    sus elementos es un string o una función, en este ultimo caso ordenará el
+    array en cascada hasta acabar el array de ordenación.
+
+  filter: si, hay un filtro que que llama filter, el filter filter. Se usa a
+    menudo con ng-repeat para hacer filtrado dinamico de un array. La expresión
+    para filtrar puede ser una de las siguientes:
+    - string: filter mirará el nombre de las claves del objeto y si coincide
+        con el string, pasará el filtro.
+    - object: si se provee un objeto, se asegurará que el objeto tenga las
+        mismas claves con los mismos valores, si lo hace, pasará el filtro.
+        Por ejemplo {size: "M"} buscará que tenga un campo llamado size que
+        contenga la letra "M", no es necesario que sea exacto.
+    - function: cada elemento será pasado a la función como argumento, si
+        devuelve false, no pasará el filtro.
+-->
+
+<!-- File: chapter8/filter-arrays.html -->
+<html>
+<head>
+  <title>Filters in Action</title>
+</head>
+<body ng-app="filtersApp">
+
+<div ng-controller="FilterCtrl as ctrl">
+
+  <button ng-click="ctrl.currentFilter = 'string'">
+    Filter with String
+  </button>
+
+  <button ng-click="ctrl.currentFilter = 'object'">
+    Filter with Object
+  </button>
+
+  <button ng-click="ctrl.currentFilter = 'function'">
+    Filter with Function
+  </button>
+
+  Filter Text
+  <input type="text"
+         ng-model="ctrl.filterOptions['string']">
+
+  Show Done Only
+  <input type="checkbox"
+         ng-model="ctrl.filterOptions['object'].done">
+
+  <ul>
+    <li ng-repeat="note in ctrl.notes |
+                   filter:ctrl.filterOptions[ctrl.currentFilter] |
+                   orderBy:ctrl.sortOrder |
+                   limitTo:5">
+      {{note.label}} - {{note.type}} - {{note.done}}
+    </li>
+  </ul>
+</div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+</script>
+
+<script type="text/javascript">
+  angular.module('filtersApp', [])
+    .controller('FilterCtrl', [function () {
+      var ctrl = this;
+      ctrl.notes         = [
+        {label: 'FC Todo', type: 'chore', done: false},
+        {label: 'FT Todo', type: 'task', done: false},
+        {label: 'FF Todo', type: 'fun', done: true},
+        {label: 'SC Todo', type: 'chore', done: false},
+        {label: 'ST Todo', type: 'task', done: true},
+        {label: 'SF Todo', type: 'fun', done: true},
+        {label: 'TC Todo', type: 'chore', done: false},
+        {label: 'TT Todo', type: 'task', done: false},
+        {label: 'TF Todo', type: 'fun', done: false}
+      ];
+      ctrl.sortOrder     = ['+type', '-label'];
+      ctrl.filterOptions = {
+        "string"  : '',
+        "object"  : {done: false, label: 'C'},
+        "function": function (note) {
+          return note.type === 'task' && note.done === false;
+        }
+      };
+      ctrl.currentFilter = 'string';
+    }]);
+</script>
+
+</body>
+</html>
+
