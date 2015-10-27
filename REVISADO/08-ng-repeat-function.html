@@ -13,6 +13,7 @@
   </style>
 </head>
 <body ng-controller="MainCtrl as ctrl">
+
 <div ng-repeat="note in ctrl.notes"
      ng-class="ctrl.getNoteClass(note.done)">
 
@@ -22,9 +23,11 @@
         ng-bind="note.assignee">
   </span>
 </div>
+
 <script
   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
 </script>
+
 <script type="text/javascript">
   angular.module('notesApp', [])
     .controller('MainCtrl', [
@@ -44,5 +47,6 @@
         };
       }]);
 </script>
+
 </body>
 </html>

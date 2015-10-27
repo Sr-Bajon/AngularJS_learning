@@ -12,21 +12,30 @@
     <option value="India">India</option>
     <option value="Other">None of the above</option>
   </select>
-  <!-- en este ejemplo, al cargar el combo tendrá el valor por defecto "India"
-       al cambiar el usuario el valor, se actualizará la variable location-->
+  <!--
+      Se crea la variable location = 'India' con ng-init
+
+      Se bindea el select con ng-model, de forma que su value queda ligado a la
+        variable location inicializada previamente.
+
+      Por defecto el combo tendrá el valor India, si lo cambiamos se actualizará
+        el valor de la variable location.
+  -->
 </div>
 
 <div>
   <select ng-model="ctrl.selectedCountryId"
           ng-options="c.id as c.label for c in ctrl.countries">
-    <!-- creamos los options dinamicamente
-        el label del option es c.label
-        c es cada objeto dentro de ctrl.countries
-        modelValue as labelValue for item in array
+    <!--
+      creamos los options dinamicamente
+       el label del option es c.label
+       c es cada objeto dentro de ctrl.countries
 
-        Observamos que modelValue no se usa como value en el option sino que se
-          enumeran los option empezando por 1, el value del select se guarda en
-          la variable del modelo que hayamos indicado en ng-model
+      modelValue as labelValue for item in array
+
+      Observamos que modelValue no se usa como value en el option sino que se
+       enumeran los option empezando por 1, el value del select se guarda en
+       la variable del modelo que hayamos indicado en ng-model
     -->
   </select>
   Selected Country ID : {{ctrl.selectedCountryId}}
@@ -35,8 +44,10 @@
 <div>
   <select ng-model="ctrl.selectedCountry"
           ng-options="c.label for c in ctrl.countries">
-    <!-- Aqui omitimos el modelValue de forma que AngularJS asume que cada
-          item es el model value, por ejmplo  {label: 'USA', id: 1} -->
+    <!--
+      Aqui omitimos el modelValue de forma que AngularJS asume que cada
+       item es el modelvalue, por ejemplo  {label: 'USA', id: 1}
+    -->
   </select>
   Selected Country : {{ctrl.selectedCountry}}
 </div>
@@ -78,8 +89,8 @@
         {label: 'India', id: 2},
         {label: 'Other', id: 3}
       ];
-      this.selectedCountryId = 2;
-      this.selectedCountry   = this.countries[1];
+      this.selectedCountryId = 1;
+      this.selectedCountry   = this.countries[2];
     }]);
 </script>
 

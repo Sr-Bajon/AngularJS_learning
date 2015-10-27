@@ -1,16 +1,14 @@
-<!--
 Instalar karma con la siguiente linea
-sudp npm install -g karma-cli
+  sudp npm install -g karma-cli
 
 Instalar karma en nuestro directorio
-npm init
-npm install karma --save-dev
+  npm init
+  npm install karma --save-dev
 
 Karma funciona con plugins que debemos instalar por separado
 Instalamos el plugin para Jasmine
 Instalamos el plugin para chrome
-
-npm install karma-jasmine karma-chrome-launcher --save-dev
+  npm install karma-jasmine karma-chrome-launcher --save-dev
 
 A continuacion deberemos configuar el archivo de configuración, aqui mas info
   http://karma-runner.github.io/0.12/config/configuration-file.html
@@ -18,7 +16,10 @@ Para crear automaticamente el archivo de configuración.
   karma init
 
 Si no lo hemos configurado con el autowatch para que ejecute los test
-automaticamnete al detectar cambios en los ficheros, podemos ejecutar
-los test con
+automaticamente al detectar cambios en los ficheros, podemos ejecutar los
+test con
   karma run
--->
+
+Para iniciar el servidor de karma y ejecutar los test automaticamente cuando
+haya cambios, si tenemos activado el autowatch
+  karma start

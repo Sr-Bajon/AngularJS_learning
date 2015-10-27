@@ -1,17 +1,25 @@
-<!-- File: chapter4/simple-ng-model.html -->
+<!-- File: chapter2/hello-controller.html -->
+<!doctype html>
 <html ng-app="notesApp">
 <head><title>Notes App</title></head>
+
 <body ng-controller="MainCtrl as ctrl">
-<input type="text" ng-model="ctrl.username"/>
-You typed {{ctrl.username}}
+{{ctrl.helloMsg}} AngularJS.
+<br/>
+{{ctrl.goodbyeMsg}} AngularJS
+
 <script
   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
 </script>
+
 <script type="text/javascript">
   angular.module('notesApp', [])
     .controller('MainCtrl', [function () {
-      this.username = 'nothing';
+      var ctrl        = this;
+      this.helloMsg   = 'Hello ';
+      ctrl.goodbyeMsg = 'Goodbye ';
     }]);
 </script>
+
 </body>
 </html>
