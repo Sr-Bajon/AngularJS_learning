@@ -1,3 +1,14 @@
+<!--
+Una recomendación con los formularios, en vez de asignarle directamente cada
+elemento al scope, con por ejemplo
+  ng-model="ctrl.username"
+podemos crear un objeto que contenga todos los campos del formularío
+directamente
+  ng-model="ctrl.user.username"
+de esta forma tendremos todos los campos del formularió en ctrl.user y lo
+tendremos mas facil y organizado.
+-->
+
 <!-- File: chapter4/two-forms-databinding.html -->
 <html ng-app="notesApp">
 <head><title>Notes App</title></head>
