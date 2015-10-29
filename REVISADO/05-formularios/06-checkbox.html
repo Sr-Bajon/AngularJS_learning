@@ -1,0 +1,66 @@
+<!--
+  textareas : funcionan igual que los inputs
+  checkbox :  solo pueden tener true o false
+      <input type="checkbox" ng-model="ctrl.user.agree">
+
+
+    Tambien podemos hacer que en vez de true/false sea un string, para ellos
+      usamos la directiva ng-true/false y le asignamos un string, ahora
+      ctrl.user.agree tendrá YES/NO en vez de true/false
+        <input  type="checkbox"
+                ng-model="ctrl.user.agree"
+                ng-true-value="YES"
+                ng-false-value="NO">
+
+      Si no queremos two way data binding, podemos usar la directiva ng-checked
+      que checkeara o no el checkbox evaluando la expresion que se le pase
+-->
+<!-- File: chapter4/checkbox-example.html -->
+<html ng-app="notesApp">
+<head><title>Notes App</title></head>
+<body ng-controller="MainCtrl as ctrl">
+
+<div>
+  <h2>What are your favorite sports?</h2>
+
+  <div ng-repeat="sport in ctrl.sports">
+    <label ng-bind="sport.label"></label>
+    <div>
+      With Binding:
+      <input type="checkbox"
+             ng-model="sport.selected"
+             ng-true-value="YES"
+             ng-false-value="NO">
+    </div>
+    <div>
+      Using ng-checked:
+      <input type="checkbox"
+             ng-checked="sport.selected === 'YES'">
+    </div>
+    <div>
+      Current state: {{sport.selected}}
+    </div>
+  </div>
+
+</div>                                   q
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+</script>
+
+<script type="text/javascript">
+  angular.module('notesApp', [])
+    .controller('MainCtrl', [function () {
+      var self    = this;
+      self.sports = [
+        {label: 'Basketball', selected: 'YES'},
+        {label: 'Cricket', selected: 'NO'},
+        {label: 'Soccer', selected: 'NO'},
+        {label: 'Swimming', selected: 'YES'}
+      ];
+    }]);
+</script>
+
+</body>
+</html>
+
