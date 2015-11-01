@@ -1,3 +1,4 @@
+// File: simpleCtrl1.js
 angular.module('notesApp', [])
   .controller('SimpleCtrl', ['$location', function ($location) {
     var self      = this;

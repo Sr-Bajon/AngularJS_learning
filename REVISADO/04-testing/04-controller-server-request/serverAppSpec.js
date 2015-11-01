@@ -34,7 +34,7 @@ describe('MainCtrl Server Calls', function () {
     mockBackend = $httpBackend;
     mockBackend.expectGET('/api/note')
       .respond([{id: 1, label: 'Mock'}]);
-    ctrl        = $controller('MainCtrl');
+    ctrl = $controller('MainCtrl');
     // At this point, a server request will have been made
   }));
 

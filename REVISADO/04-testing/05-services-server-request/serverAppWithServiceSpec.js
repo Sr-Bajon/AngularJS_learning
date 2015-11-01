@@ -1,3 +1,4 @@
+// serverAppWithServiceSpec.js
 describe('Server App Integration', function () {
 
   beforeEach(module('serverApp2'));

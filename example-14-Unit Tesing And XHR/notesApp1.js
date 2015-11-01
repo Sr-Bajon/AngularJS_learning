@@ -1,3 +1,4 @@
+// File: notesApp1.js
 angular.module('notesApp1', [])
   .factory('ItemService', [function () {
     var items = [
