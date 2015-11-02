@@ -13,13 +13,11 @@ angular.module('myModule', [])
   .controller('MyCtrl', ['currencyFilter',
     // inyectamos el filter currency con currencyFilter
     function (currencyFilter) {
-    }]);
+      //  Y para usarlo sería
+      self.filteredArray = filterFilter(self.notes, 'ch');
+    }
+  ]);
 
-
-
-//  Y para usarlo sería
-
-  self.filteredArray = filterFilter(self.notes, 'ch');
 
 /*
   Teniendo en cuenta:
