@@ -1,0 +1,18 @@
+<div class="stock-dash">
+  Name:
+<span class="stock-name"
+      ng-bind="stockData.name">
+</span>
+  Price:
+<span class="stock-price"
+      ng-bind="stockData.price | currency">
+</span>
+  Percentage Change:
+<span class="stock-change"
+      ng-bind="getChange(stockData) + '%'">
+</span>
+</div>
+<!--
+ en el html de la directiva todas las referencias a la variable stock del
+ padre han sido reemplazadas por los datos de la directiva, stockData.
+ -->

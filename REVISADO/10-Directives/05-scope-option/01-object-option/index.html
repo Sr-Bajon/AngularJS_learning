@@ -1,0 +1,77 @@
+<!--
+  Scope
+    Por defecto, cada directiva hereda el scope del padre, que se le pasa a la
+    funcion link. Esto puede traer problemas:
+    * Añadir variables y funciones al scope modifica el del padre tambien, que
+      de pronto puede acceder a mas variables y funciones.
+    * La directiva puede sobreescribir variables y funciones con el mismo nombre
+      sin querer
+    * La directiva puede usar variables y funciones del padre, lo cual es mala
+      practica pues ya no sería reusable.
+
+  Tenemos la palabra reservada scope en la definicion de la directiva, y puede
+  aceptar los siguientes valores:
+    false   El valor por defecto, que le dice a Angular que el scope de la
+            directiva es el mismo que el del padre.
+            Las modificaciones en el scope estarán disponibles en la directiva
+            y en el padre.
+    true    Le dice a Angular que el scope hereda del padre, pero crea una
+            child scope para si misma.
+            La directiva sigue teniendo acceso a las variables y funciones del
+            padre, pero las modificaciones que se hagan en el scope de la
+            directiva no estan disponibles en el padre.
+    object  Podemos pasar un objeto con claves y valores al scope. Esto le dice
+            a Angular que cree lo que llamamos un isolated scope.
+            Este scope no hereda de nadie, todos los atributos que haya que
+            pasarle a esta directiva han de ser mediante atributos HTML.
+            Es la mejor opcion cuando creamos componentes reutilizables que
+            deben ser independientes de como y donde son usados.
+
+            En el objeto, podemos identificar que atributos deben ser
+            especificados en el HTML cuando se use la directiva, y los tipos de
+            valores que serán pasados a la directiva.
+            En particular, podemos especificar tres tipos posibles de valores,
+            los cuales AngularJS pondrá directamente en el scope de la directiva.
+
+            =   Especifica que el valor del atributo HTML será tratado como
+                un objeto JSON. El atributo estará atado a la directiva por lo
+                que cualquier cambio en él estará disponible en la directiva.
+            @   El valor del atributo HTML será tratado como un string, que
+                puede tener o no expresiones AngularJS {{}}.
+                Cualquier cambio en el valor estará disponible en la directiva.
+            &   Especifica que el valor del atributo es una función en algun
+                controlador cuya referencia necesita estar disponible en la
+                directiva.
+                La directiva puede utilizar la función cuando la necesite.
+
+
+ En nuestro ejemplo ahora le pasaremos el stock object a nuestro widget, de
+ esta forma si la variable se renombra desde fuera, la nueva variable se le
+ pasará a nuestra directiva, haciendola independiente del nombre.
+
+index.html
+-->
+<html>
+<head>
+  <title>Stock Market App</title>
+</head>
+<body ng-app="stockMarketApp">
+<div ng-controller="MainCtrl as mainCtrl">
+  <h3>List of Stocks</h3>
+
+  <div ng-repeat="s in mainCtrl.stocks">
+    <div stock-widget stock-data="s">
+    </div>
+  </div>
+</div>
+<script src="http://code.angularjs.org/1.2.16/angular.js"></script>
+<script src="app.js"></script>
+<script src="directive.js"></script>
+</body>
+</html>
+
+
+<!--
+ vemos que el html es igual pero hemos añadido un atributo stock-data="s"
+ donde "s" es el nombre que le hemos dado a la variable en ng-repeat
+ -->
