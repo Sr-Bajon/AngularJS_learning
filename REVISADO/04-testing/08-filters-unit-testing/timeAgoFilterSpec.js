@@ -1,9 +1,10 @@
-// probando el filtro con los argumentos opcionales
-
+// File: timeAgoFilterSpec.js
 describe('timeAgo Filter', function () {
 
   beforeEach(module('filtersApp'));
 
+  // al igual que con controladores o servicios, inyectamos nuestro filtro y
+  // lo asignamos a una variable para poder usarlo.
   var filter;
   beforeEach(inject(function (timeAgoFilter) {
     filter = timeAgoFilter;
@@ -18,18 +19,18 @@ describe('timeAgo Filter', function () {
     // execute in mere milliseconds.
     var currentTime   = new Date().getTime();
     currentTime -= 10000;
-    expect(filter(currentTime, false)).toEqual('minutes ago');
+    expect(filter(currentTime)).toEqual('seconds ago');
 
     var fewMinutesAgo = currentTime - 1000 * 60;
-    expect(filter(fewMinutesAgo, false)).toEqual('minutes ago');
+    expect(filter(fewMinutesAgo)).toEqual('minutes ago');
 
     var fewHoursAgo   = currentTime - 1000 * 60 * 68;
-    expect(filter(fewHoursAgo, false)).toEqual('hours ago');
+    expect(filter(fewHoursAgo)).toEqual('hours ago');
 
     var fewDaysAgo    = currentTime - 1000 * 60 * 60 * 26;
-    expect(filter(fewDaysAgo, false)).toEqual('days ago');
+    expect(filter(fewDaysAgo)).toEqual('days ago');
 
     var fewMonthsAgo  = currentTime - 1000 * 60 * 60 * 24 * 32;
-    expect(filter(fewMonthsAgo, false)).toEqual('months ago');
+    expect(filter(fewMonthsAgo)).toEqual('months ago');
   });
 });
