@@ -1,0 +1,22 @@
+<!-- y para usarlo en stock.html -->
+<div class="stock-dash">
+  Name:
+<span class="stock-name"
+      ng-bind="stock.name">
+</span>
+  Price:
+<span class="stock-price"
+      ng-bind="stock.price | currency">
+</span>
+  Percentage Change:
+<span class="stock-change"
+      ng-bind="getChange(stock) + '%'">
+</span>
+</div>
+<!--
+ lo unico que ha cambiado es que en vez de llamar a mainCtrl.getChange(stock)
+ llamamos directamente a getChange(stock), lo que implica que esta funcion
+ esta en nuestro propip $scope. Ahora nuestra directiva es independiente de
+ que el controlador tenga una función getChange, se ha vuelto independiente.
+ En la link function tb podemos definir listeners, trabajar directamente con
+ el elemento DOM y mucho mas.-->
