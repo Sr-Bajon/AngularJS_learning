@@ -63,10 +63,9 @@ angular.module('resolveApp', ['ngRoute'])
 
   Otra cosa interesante de resolve es que el resultado de las claves que tenga
   pueden ser inyectadas dentro del controlador añadiendolas como dependencias.
-
+*/
   $http.get('/api/hasAccess').then(function(response) {
     console.log('I am passed to the controller', response);
     return response;
   });
 
- */

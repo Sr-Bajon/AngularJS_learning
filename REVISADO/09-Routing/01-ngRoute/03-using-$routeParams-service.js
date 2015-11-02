@@ -33,35 +33,3 @@ angular.module('resolveApp', ['ngRoute'])
         controllerAs: 'myCtrl'
       });
   }]);
-
-/*
-  Algunas cosas que no están bien documentadas:
-
-  Empty Templates
-    AngularJS requiere que cada ruta esté asociada a un template o templateURL
-    que no esté vacío, en caso contrarío ignorará esa ruta. Un string vacío
-    tampoco sirve.
-
-  Resolve injection into controller
-    Si usamos resolve y queremos que se inyecten los valores de nuestras
-    dependencias en el controlador, hay que definir nuestro controlador como
-    parte de la definición de la ruta, y no directamente en nuestro controlador
-    con la directiva ng-controller. De otra forma, AngularJS no sabrá que
-    controlador necesita esas dependencias, y no las podrá inyectar
-    apropiadamente.
-
-  $routeParam variable type
-    Un problema potencial al usar el servicio $routeParams es cuando comparamos
-    los valores que obtenemos de $routeParams con los objetos de nuestra base de
-    datos.
-    Por ejemplo, si almacenamos IDs como numeros en nuestra base de datos y lo
-    comparamos con nuestros datos de $routeParams, debemos tener cuidado pues
-    $routeParams devuelve string para todos los datos por lo que una comparación
-    === con algo que no sea un numero fallará, así que habrá que hacer la
-    conversión precisa.
-
-  One ng-view per application
-    Por cada aplicacion AngularJS que use ngRoute, puede haber una y solo una
-    directiva ng-view. No podemos tener multiples ng-views anidadadas.
-    El contenido se duplicará en cada ng-view en caso de que tengamos mas de uno
- */
