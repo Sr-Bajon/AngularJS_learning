@@ -13,3 +13,17 @@ angular.module('stockMarketApp', [])
         (stock.price - stock.previous) / stock.previous) * 100);
     };
   }]);
+
+/*
+*   Siempre que queramos servir un partial, debemos hacerlo desde servidor ya
+*   que el navegador no permite pedir archivos con el protocolo file://
+*   De forma simple podemos añadir un servidor con el modulo htt-server
+*
+*     sudo npm install -g http-server
+*
+*   y despues ejecutarlo en el directorio en el que esté index.html
+*
+*     http-server
+*
+*   Webstorm tambien crea un servidor si ejecutamos index.html con él.
+* */

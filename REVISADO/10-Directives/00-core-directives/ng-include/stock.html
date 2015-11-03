@@ -1,0 +1,54 @@
+<!--
+   ng-include
+    Toma una expresión y la trata como una ruta a un archivo HTML.
+    Pide ese HTML al servidor e incluye su contenido en el elemento que contenga
+    la directiva ng-include, reemplazando lo que tuviera previamente ese
+    elemento
+
+    Imaginemos que extraemos el siguiente trozo de HTML a un archivo llamado
+    stock.html
+-->
+
+<!--
+  Vemos que el partial corresponde a la parte que se repite con ng-repeat
+  En este caso hacemos que la ruta a la que apunta ng-include se define en el
+  controlador, pero podriamos haberlo definido inline con un string
+
+    <div ng-include="'views/stock.html'"></div>
+
+  Observa también que el string está entre comillas simples, esto es para que
+  AngularJS sepa que lo que le pasamos es un string literal, no una variable,
+  sin las comillas simples dentro de las dobles interaría buscar la variable
+  view/stock.html  lo cual evidentemente fallaría.
+
+  El modulo de nuestra aplicación sería el siguiente. Estaría en el archiv
+  app.js (sin <script> evidentemente)
+-->
+
+<!--
+  Limites de ng-include
+    - El archivo stock.html busca una variable llamada stock para mostrar el
+      nombre, precio y porcentaje
+      Esto significa que si cambiamos el nombre en uno si y en otro no la
+      aplciacion no funcionará, por lo que tenemos que mantener dos archivos
+      en vez de uno.
+    - El partial no es reusable pues depende de un controlador y del propio
+      archivo index.html que define el nombre sobre el que se va a iterar.
+    - Estos problemas se pueden solucionar con directivas creadas por nosotros
+      o custom directives
+-->
+
+<div class="stock-dash">
+  Name:
+<span class="stock-name"
+      ng-bind="stock.name">
+</span>
+  Price:
+<span class="stock-price"
+      ng-bind="stock.price | currency">
+</span>
+  Percentage Change:
+<span class="stock-change"
+      ng-bind="mainCtrl.getChange(stock) + '%'">
+</span>
+</div>

@@ -7,7 +7,7 @@
   6. Write our expectations for rendering and behavior.
 */
 
-// File: chapter12/stockDirectiveRenderSpec.js
+// File: stockDirectiveRenderSpec.js
 describe('Stock Widget Directive Rendering', function () {
 
   beforeEach(module('stockMarketApp'));

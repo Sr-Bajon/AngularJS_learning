@@ -1,3 +1,4 @@
+// File: stockDirective.js
 angular.module('stockMarketApp', [])
   .directive('stockWidget', [function () {
     return {

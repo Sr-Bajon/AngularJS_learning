@@ -2,6 +2,7 @@
   Ahora vamos a testear la logica y el comportamiento de la directiva.
  */
 
+// File: stockDirectiveBehaviorSpec.js
 describe('Stock Widget Directive Behavior', function () {
   beforeEach(module('stockMarketApp'));
   var compile, mockBackend, rootScope;
