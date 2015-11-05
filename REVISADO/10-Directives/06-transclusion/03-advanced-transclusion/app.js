@@ -11,10 +11,9 @@
 
   Haremos una copia con menos funcionalidad de ng-repeat para ilustrar este
   tipo de transclude.
-
-
  */
 
+// File: app.js
 angular.module('stockMarketApp', [])
   .controller('MainCtrl', [function () {
     var self    = this;

@@ -1,3 +1,4 @@
+<!-- File: index.html -->
 <html>
 <head>
   <title>Stock Market App</title>
@@ -8,7 +9,14 @@
   <h3>List of Stocks</h3>
   <div ng-repeat="s in mainCtrl.stocks">
     <div stock-widget stock-data="s">
-      This content will be blown away
+      Recommended Stock : {{s.name}}
+       <!-- Si el elemento transcluded tiene bindeos, estos tienen que corresponderse
+            con el scope del sitio donde estan incluidos, en este caso como estamos
+            dentro de un ng-repeat sería s.name pues es la variable que estamos
+            usando.
+            Se puede pensar que Angular completa todos los bindeos antes de incluir
+            el contenido en la directiva (aunque no es así, pero nos sirve)
+       -->
     </div>
   </div>
 </div>

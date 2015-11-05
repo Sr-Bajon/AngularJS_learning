@@ -3,7 +3,7 @@
   directivas reusables donde cada implementación puede necesitar renderizar
   una cierta seccion de la UI diferente.
  */
-
+// File: directive.js
 angular.module('stockMarketApp')
   .directive('stockWidget', [function () {
     return {

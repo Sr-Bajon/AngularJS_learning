@@ -15,7 +15,7 @@
       ng-transclude, que hace que el elemento capturado sea hijo del elemento
       donde se encuentra la directiva.
  */
-
+// File: directive.js
 angular.module('stockMarketApp')
   .directive('stockWidget', [function () {
     return {

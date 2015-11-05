@@ -1,13 +1,11 @@
+<!-- File: stock.html -->
 <div class="stock-dash">
-  Name:
-<span class="stock-name"
-      ng-bind="stockData.name">
-</span>
+  <span ng-transclude></span>
   Price:
 <span class="stock-price"
       ng-bind="stockData.price | currency">
 </span>
-  Percentage Change
+  Percentage Change:
 <span class="stock-change"
       ng-bind="getChange(stockData) + '%'">
 </span>
