@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" np-app="MyApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body ng-controller="ValidateModel as vm">
+
+<form name=vm.form novalidate ng-submit=vm.signUp()>
+  <label>
+    Email:
+    <input type=email name=email
+           ng-model=vm.email required>
+    <!-- Mientras se esta resolviendo la validacion asincrona la variable
+    $pending.nombreDirectivaAsincrona es true, lo que nos permite mostrar
+    un mensaje, o un uroboro -->
+    <div ng-if=vm.form.email.$pending.availableEmail>
+      Checking email availability...
+    </div>
+    <div ng-messages=vm.form.email.$error
+         ng-if=vm.form.email.$touched>
+      <div ng-message=required>
+        Please specify an email address
+      </div>
+      <div ng-message=email>
+        Please specifiy a valid email address
+      </div>
+      <div ng-message=availableEmail>
+        Email address is already taken
+      </div>
+    </div>
+  </label>
+  <label>
+    Password:
+    <input type=password name=password
+           ng-model=vm.password required password>
+
+  </label>
+  <button type=submit ng-disabled=!vm.form.$valid>
+    Sign Up!
+  </button>
+</form>
+
+<!--
+  * Formulario atributo novalidate para que no moleste a angular
+  * Nombre del formulario = "vm.form"
+  * Atributo name del elemento = "email"
+  * ng-model del elemento = "vm.email"
+  * <button type=submit ng-disabled=!vm.form.$valid>
+    * ng-disabled=!vm.form.$valid   !==   ng-disabled=vm.form.$invalid
+  * los validadores custom de elementos, al estar con otra directiva ng-model
+      obtienen acceso al ngModelController
+
+
+-->
+
+
+<script>
+  angular.module('MyApp', [])
+      .directive('password', function () {
+        return {
+          require: 'ngModel',
+          controller: function ($element) {
+            var ctrl = $element.controller('ngModel');
+
+
+            // obtiene el elemento que ya tiene una clave $validators, con sus
+            // validadores, y le añadimos uno.
+            // el validador debe devolver true o false para indicar si es valido
+            // o no
+            ctrl.$validators.password =
+                function (modelValue, viewValue) {
+                  return viewValue && viewValue.length >= 8
+                      && /[0-9]/.test(viewValue)
+                      && /[a-z]/i.test(viewValue);
+                };
+          }
+        };
+      })
+      .directive('availableEmail', function (UserService) {
+        return {
+          require: 'ngModel',
+          controller: function ($element) {
+            var ctrl = $element.controller('ngModel');
+
+            // en este caso accedemos a la clave $asyncValidators donde podemos
+            // definir validadores asyncronos
+            ctrl.$asyncValidators.availableEmail =
+                function (modelValue, viewValue) {
+                  return UserService.isValid(viewValue);
+                };
+          }
+        };
+      });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+.signup {
+  width: 30%;
+  margin: 0 auto;
+  border: 1px solid #333;
+  padding: 1em;
+  text-align: center;
+}
+
+.signup h1 {
+  margin-top: 0;
+}
+
+.signup label {
+  display: inline-block;
+  margin-top: 1em;
+}
+
+.signup label span {
+  display: inline-block;
+  width: 5em;
+  text-align: right;
+}
+
+.signup input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.signup .pending {
+  font-style: italic;
+}
+
+.signup .pending .spinner {
+  animation: spin 0.5s linear infinite;
+  display: inline-block;
+  height: 0.3em;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.signup .error {
+  color: red;
+}
+
+.signup button {
+  margin-top: 1em;
+  padding: 0.5em;
+  font-size: 1em;
+}

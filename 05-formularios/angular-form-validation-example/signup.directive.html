@@ -1,0 +1,41 @@
+<form ng-submit=vm.submit() name=vm.form novalidate class=signup>
+ <h1>Sign Up</h1>
+ <div>
+     <label>
+         <span>Email:</span>
+         <input type=email placeholder=Email name=email ng-model=vm.email required available-email autofocus>
+     </label>
+ </div>
+ <div ng-messages=vm.form.email.$error ng-if=vm.form.email.$touched class=error>
+     <div ng-message=required>Please specify an email address</div>
+     <div ng-message=email>Please specifiy a valid email address</div>
+     <div ng-message=availableEmail>Already taken</div>
+ </div>
+ <div ng-if=vm.form.email.$pending.availableEmail class=pending>
+     <span class=spinner>*</span> Checking availability...
+ </div>
+ <div>
+     <label>
+         <span>Password:</span>
+         <input type=password placeholder=Password name=password ng-model=vm.password required password>
+     </label>
+ </div>
+ <div ng-messages=vm.form.password.$error ng-if=vm.form.password.$touched class=error>
+     <div ng-message=required>A password is required</div>
+     <div ng-message=password>Password must be at least 8 characters long and contain both numbres and letters</div>
+ </div>
+ <div>
+     <button type=submit ng-disabled=!vm.form.$valid>Sign Up</button>
+ </div>
+
+
+  <div>
+      {{vm.form}}
+
+<!--      {{vm.form.email}}
+
+      {{vm.form.password}}-->
+
+  </div>
+
+</form>
