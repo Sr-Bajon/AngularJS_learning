@@ -1,4 +1,4 @@
-// si nuestro template es suficientemente pequeño podemos optar por la opcion
+// si nuestro template es suficientemente pequeÃ±o podemos optar por la opcion
 // de crearlo inline con la opcion template de la directiva.
 // la declaracion de directiva siguiente es exactamente igual que la anterior
 angular.module('stockMarketApp')

@@ -79,7 +79,7 @@ angular.module('dynamicFormApp')
   }]);
 
 /*
-  1.  Añadimos require apra asegurarnos que la directiva formElement se usa como
+  1.  Añadimos require para asegurarnos que la directiva formElement se usa como
       un hijo de un elemento form y tambien un scope nuevo como es lo
       recomendado.
   2.  Le damos una funcion compile, que es llamada con el elemento y sus
