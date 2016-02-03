@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body ng-app="app">
+
+<input type="text" value="Hola"
+       ng-init="myVar = 'Hola'"
+       ng-model="myVar" >
+
+<my-prueba></my-prueba>
+<br><br><br>
+<h3>Caso de directiva con scope=false<br>
+  Se manipula el scope dentro de la directiva, de forma que el valor del
+input cambia al cambiar la variable del scope en la directiva</h3>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

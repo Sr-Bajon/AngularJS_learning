@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body ng-controller="MyController as myCtrl">
+
+
+<input type="text" value="Hola"
+       ng-init="myVar = 'Hola'"
+       ng-model="myVar">
+
+<my-prueba></my-prueba>
+
+<div ng-init="variable = 'interesante'"></div>
+<h1>{{variable}}</h1>
+
+<my-prueba2
+    copy="myCtrl.objeto"
+    copy2="copia el atributo con otro nombre"
+    bidideep="variable"
+    bidideep2="myCtrl.bidideep2"
+    bidishallow="myCtrl.bidishallow"
+    bidishallow2="myCtrl.bidishallow2"
+    functionwithcontext="myCtrl.method">
+</my-prueba2>
+
+<br><br><br>
+
+<h3>Caso de directiva con scope isolated y scope isolated con opciones<br>
+</h3>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+

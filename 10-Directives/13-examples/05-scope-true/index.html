@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body ng-app="app">
+
+<input type="text" value="Hola"
+       ng-init="myVar = 'Hola'"
+       ng-model="myVar" >
+
+<my-prueba></my-prueba>
+<br><br><br>
+<h3>Caso de directiva con scope=true<br>
+Crea un scope hija del scope donde se encuentre la directiva<br>
+En este caso si queremos acceder al scope padre lo hacemos con $scope.$parent
+</h3>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
