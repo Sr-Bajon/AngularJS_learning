@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body ng-app="app">
+
+<div ng-controller="MyController as myCtrl">
+  <phone dial="myCtrl.callHome()"></phone>
+  <phone2 dial="myCtrl.callHome2(message)"></phone2>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

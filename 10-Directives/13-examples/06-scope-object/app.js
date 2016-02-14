@@ -51,8 +51,7 @@
         bidiDeepWithOtherName   : '=bidideep2',  // bi-directional model copy with name change deep watch
         bidishallow             : '=*',  // bi-directional model copy with shallow watch
         bidiShallowWithOtherName: '=*bidishallow2',  // bi-directional model copy with name change shallow watch
-        bidiOptional            : '=?',  // bi-directional model optional copy
-        functionWithContext     : '&'   // method copy with directive context
+        bidiOptional            : '=?'  // bi-directional model optional copy
       },
       controller  : function ($scope, $element, $attrs, $transclude, $timeout) {
         var ctrl = this;
@@ -60,7 +59,6 @@
           $scope.bidideep = 'no tanto';
         }, 3000);
 
-        console.log($scope.functionWithContext());
       },
       controllerAs: 'ctrl'
 

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app="multiSlotTranscludeExample">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .title, .footer {
+      background-color: gray
+    }
+  </style>
+</head>
+<body>
+
+<div ng-controller="ExampleController">
+  <input ng-model="title" aria-label="title"> <br/>
+  <textarea ng-model="text" aria-label="text"></textarea> <br/>
+  <pane>
+    <pane-title>Titulo:
+      <a ng-href="{{link}}">{{title}}</a>
+    </pane-title>
+    <pane-body><p>Body: {{text}}</p><br></pane-body>
+    <pane-footer><p>Vuelva Pronto</p></pane-footer>
+  </pane>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
