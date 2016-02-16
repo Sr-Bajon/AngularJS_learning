@@ -36,7 +36,15 @@
                      // del argumento de la función y el valor será el valor de este argumento
                      // <phone2 dial="myCtrl.callHome2(message)"></phone2>
         },
-        template: '<input type="button" ng-click="dial({message:123})" value="Pulsa Aqui">'
+        template: '<input type="button" ng-click="dial({message:123})" value="Pulsa Aqui">',
+        controller: function($scope, $element, $transclude, $attrs){
+          // aqui dial no es una función, es simplemente un string
+          console.log($attrs);
+        },
+        link: function(scope, elements, attrs, modelCtrl){
+          // aqui dial no es una función, es simplemente un string
+          console.log(attrs);
+        }
       };
     });
 

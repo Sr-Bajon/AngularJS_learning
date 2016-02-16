@@ -6,9 +6,11 @@
 </head>
 <body ng-controller="MyController as myCtrl">
 
-<mi-prueba ng-model="myCtrl.array" repetir="3">
-  <span>Este texto ha sido transcludido o como se diga en español</span>
-</mi-prueba>
+<div ng-repeat="i in [0,1,2]">
+    <simple>
+        <div>Inner content</div>
+    </simple>
+</div>
 
 <script src="node_modules/angular/angular.js"></script>
 <script src="app.js"></script>
